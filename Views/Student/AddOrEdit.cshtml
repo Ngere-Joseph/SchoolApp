@@ -1,0 +1,148 @@
+﻿@model StudentVM
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken() 
+
+    <div class="form-horizontal">
+        <h4>Course</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @if (ViewBag.Id != null)
+        {
+            <input value="@ViewBag.Id" hidden asp-route-id ="@ViewBag.Id" />
+        }
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Id, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id)
+                @Html.ValidationMessageFor(model => model.Id)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FName)
+                @Html.ValidationMessageFor(model => model.FName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LName)
+                @Html.ValidationMessageFor(model => model.LName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gender)
+                @Html.ValidationMessageFor(model => model.Gender)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ClassRoomID">Department</label>
+            <div class="col-md-10">
+                @*@Html.DropDownListFor(m => m.ClassRoomID, (IEnumerable<Student>)ViewBag.ClassRoomID, new { @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.ClassRoomID, ViewBag.ClassRoomID as SelectList, "-- Select Department --", new { @class = "form-control" })
+                @*@Html.DropDownList("ClassRoomID", String.Empty)*@
+                @Html.ValidationMessageFor(model => model.ClassRoomID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+
+
+
+
+
+
+@*@model Student
+
+@{
+    ViewData["Title"] = "Add a new student";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Add a New Pupil</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="AddOrEdit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <!--<div class="form-group text-center">
+                        <img id="ProfilePicturePreview" class="border-info rounded-circle" style="max-width: 150px" />
+                    </div>-->
+                    <div class="form-group">
+                        <label asp-for="FName" class="control-label"></label>
+                        <input asp-for="FName" class="form-control" />
+                        <span asp-validation-for="FName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LName" class="control-label"></label>
+                        <input asp-for="LName" class="form-control" />
+                        <span asp-validation-for="LName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="Gender" class="control-label"></label>
+                        <input asp-for="Gender" class="form-control" />
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="ClassRoomID">Department</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("ClassRoomID", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ClassRoomID)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Add" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">View All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+*@
